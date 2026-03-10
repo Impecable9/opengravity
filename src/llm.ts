@@ -69,10 +69,11 @@ export async function transcribeAudio(filePath: string): Promise<string> {
 
 export async function synthesizeSpeech(text: string, outputPath: string): Promise<void> {
     try {
-        console.log(`Synthesizing speech with Edge TTS to: ${outputPath}`);
+        console.log(`Synthesizing speech with Edge TTS (Alvaro) to: ${outputPath}`);
         
         const communicate = new Communicate(text, {
             voice: "es-ES-AlvaroNeural",
+            // rate: "+0%", // Future tuning: slow down or speed up voice
         });
 
         const writable = fs.createWriteStream(outputPath);
