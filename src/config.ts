@@ -32,4 +32,7 @@ export const CONFIG = {
     // Base apunta a menteraiz.vercel.app (admin del .com) porque .es tiene DISABLE_ADMIN=true
     JM_API_BASE_URL: getEnvVar("JM_API_BASE_URL", false) || "https://menteraiz.vercel.app",
     JM_ADMIN_SECRET: getEnvVar("JM_ADMIN_SECRET", false),
+    // Image generation
+    FAL_API_KEY: getEnvVar("FAL_API_KEY", false),
+    MUAPI_API_KEY: getEnvVar("MUAPI_API_KEY", false),
 };

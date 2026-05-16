@@ -3,6 +3,7 @@ import * as path from "path";
 import { fileURLToPath } from "url";
 import { CONFIG } from "./config.js";
 import { jmTools, executeJmTool } from "./tools-jm.js";
+import { imageTools, executeImageTool } from "./tools-image.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -241,6 +242,7 @@ export let toolsDefinitions: Tool[] = [
     ...localTools,
     ...(CONFIG.AZURETRADEHUB_API_KEY ? azuretools : []),
     ...(CONFIG.JM_ADMIN_SECRET ? jmTools : []),
+    ...(CONFIG.FAL_API_KEY ? imageTools : []),
 ];
 
 export async function executeTool(name: string, args: any): Promise<any> {
@@ -450,6 +452,11 @@ export async function executeTool(name: string, args: any): Promise<any> {
     // ─── Jardín Mental tools (claudework) ──────────────────────────────────
     if (name.startsWith("jm_")) {
         return await executeJmTool(name, args);
+    }
+
+    // ─── Image generation tools (fal.ai) ───────────────────────────────────
+    if (name.startsWith("generate_image_")) {
+        return await executeImageTool(name, args);
     }
 
     throw new Error(`Unknown tool: ${name}`);

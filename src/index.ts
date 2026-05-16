@@ -11,7 +11,7 @@ const HANDLER_TIMEOUT_MS = 120_000;
 
 export const opengravity = onRequest(
     {
-        secrets: ["JM_ADMIN_SECRET"],
+        secrets: ["JM_ADMIN_SECRET", "FAL_API_KEY"],
         region: "us-central1",
         // 512MiB / 1 vCPU — suficiente para LLM + TTS y dentro del free tier
         memory: "512MiB",
