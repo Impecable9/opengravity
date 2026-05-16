@@ -6,9 +6,9 @@ console.log("Initializing OpenGravity Cloud Function...");
 
 // Create a v2 HTTPS function to receive Telegram webhooks
 export const opengravity = onRequest(
-    { 
-        secrets: [], // Add here if using Firebase Secret Manager
-        region: "us-central1" // or any region
-    }, 
+    {
+        secrets: ["JM_ADMIN_SECRET", "JM_API_BASE_URL"],
+        region: "us-central1",
+    },
     webhookCallback(bot, "express")
 );
